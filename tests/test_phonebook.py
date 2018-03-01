@@ -1,22 +1,27 @@
 import unittest
 
-import app.phonebook as phonebook
+
+from app.phonebook import Phonebook
+
 
 class Testphonebook(unittest.TestCase):
-    
     def test_add_contact(self):
-        response = phonebook.addContact("Brian", "Ouma", "0734576890")
-        self.assertEqual(response["message"], "Contact created successfully")
-
-    def test_update_contact(self):
-        response = phonebook.updateContact({"Jane", "Doe", "0721947689" },{"John", "Doe", "0721949689"})
-        self.assertEqual(response["message"], "Contact updated successfully")
-
-    def test_delete_contact(self):
-        response = phonebook.deleteContact("Mike", "James", "0721947689")
-        self.assertEqual(response["message"], "Contact deleted successfully")
+        phonebook = Phonebook()
+        response = phonebook.add_contact("John Doe", "0789567456")
+        self.assertEqual(response["message"], "Contact added successfully")
 
     def test_view_contact(self):
-        response = phonebook.viewContact("Brian", "Mwathi", "0734473456")
-        self.assertEqual(response["message"], "Contact found successfully")
+        phonebook = Phonebook()
+        response = phonebook.add_contact("Jane Dorothy", "0728987856")
+        response = phonebook.view_contact(phonebook)
+        self.assertEqual(response, {'fullname':"Jane Dorothy", 'number':"0728987856"})
 
+    def test_delete_contact(self):
+        phonebook = Phonebook()
+        response = phonebook.delete_contact(phonebook)
+        self.assertEqual(response["message"], "Deleted contact successfully")
+
+    def test_update_contact(self):
+        phonebook = Phonebook()
+        response = phonebook.update_contact(phonebook)
+        self.assertEqual(response["message"], "Updated contact successfully")
