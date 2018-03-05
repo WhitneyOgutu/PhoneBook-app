@@ -1,7 +1,6 @@
 class Phonebook:
     def __init__(self):
         self.phonebook = []
-
     
     def add_contact(self, fullname, number):
         contact = {}

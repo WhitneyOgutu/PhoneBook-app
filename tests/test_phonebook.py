@@ -1,8 +1,6 @@
 import unittest
 
-
 from app.phonebook import Phonebook
-
 
 class Testphonebook(unittest.TestCase):
     def test_add_contact(self):
